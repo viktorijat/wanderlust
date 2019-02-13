@@ -2,6 +2,7 @@ package com.wanderlust.contest.controllers;
 
 import com.wanderlust.contest.model.Contestant;
 import com.wanderlust.contest.repository.ReactiveContestantRepository;
+import java.security.Principal;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,5 +69,10 @@ public class ContestantController {
                                 .then(Mono.just(new ResponseEntity<Void>(HttpStatus.OK)))
                 )
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @RequestMapping("/user")
+    public Principal user(Principal principal) {
+        return principal;
     }
 }
