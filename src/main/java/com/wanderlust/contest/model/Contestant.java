@@ -1,33 +1,31 @@
 package com.wanderlust.contest.model;
 
 import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "contestants")
 public class Contestant {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
     private String username;
     private String email;
 
     public Contestant() {
     }
 
-    public Contestant(Long id, String username, String email) {
+    public Contestant(String id, String username, String email) {
         this.id = id;
         this.username = username;
         this.email = email;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
